@@ -1,5 +1,5 @@
 
-![Logo](https://gregoirevaillant.github.io/opup-logo/logoopup.svg)
+![Logo](https://gregoirevaillant.github.io/opup/logoopup.svg)
 
 
 # OpUp
