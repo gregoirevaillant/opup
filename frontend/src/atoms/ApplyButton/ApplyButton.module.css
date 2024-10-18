@@ -1,0 +1,34 @@
+.scrollButton {
+	display: flex;
+	position: sticky;
+	bottom: 2rem;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	background-color: var(--background);
+	border: solid;
+	border-radius: var(--button-radius);
+	color: var(--touch);
+	font-weight: 900;
+	padding: 0.5rem;
+	cursor: pointer;
+	transition: all 0.3s;
+	transform-origin: center;
+
+	&:hover {
+		background-color: var(--touch);
+		color: var(--background);
+		transform: scale(1.1);
+		transform: translate(-50%, 0%);
+	}
+}
+
+.hidden {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+	pointer-events: none;
+}
+
+.visible {
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+}

@@ -1,0 +1,73 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	height: 100%;
+	gap: var(--large-margin);
+
+	.jobsWrapper {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		grid-column-gap: 0px;
+		grid-row-gap: 0px;
+		gap: var(--large-padding);
+		margin: 0 var(--large-margin);
+	}
+
+	.noJobsWrapper {
+		height: 100%;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.wrapper {
+		.jobsWrapper {
+			grid-template-columns: repeat(1, 1fr);
+			grid-template-rows: repeat(auto, 1fr);
+			gap: var(--large-padding);
+			margin: 0 var(--small-margin);
+		}
+	}
+}
+
+.button {
+	align-self: center;
+	display: flex;
+	background-color: var(--background);
+	border: solid;
+	border-radius: var(--button-radius);
+	color: var(--touch);
+	font-weight: 900;
+	padding: 0.75rem 2rem;
+	cursor: pointer;
+	transition: all 0.3s;
+	font-size: 1.5rem;
+	gap: 1rem;
+	justify-content: center;
+	align-items: center;
+
+	&:hover {
+		background-color: var(--touch);
+		color: var(--background);
+		transform: scale(1.1);
+	}
+}
+
+.formPopup {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #00000065;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #ccc;
+	padding: 20px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	z-index: 999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

@@ -1,0 +1,19 @@
+{
+    "name": "opup",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "dev": "concurrently \"cd frontend && vite --port 3000 --host\" \"cd backend && nodemon src/server.ts\"",
+        "install": "cd frontend && npm install && cd ../backend && npm install",
+        "pretty": "cd frontend && prettier --write \"./**/*.{scss,css,js,jsx,mjs,cjs,ts,tsx,json}\" && cd ../backend && prettier --write \"./**/*.{scss,css,js,jsx,mjs,cjs,ts,tsx,json}\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "concurrently": "^7.0.0",
+        "nodemon": "^3.1.7",
+        "prettier": "^3.3.3",
+        "vite": "^5.4.9"
+    }
+}

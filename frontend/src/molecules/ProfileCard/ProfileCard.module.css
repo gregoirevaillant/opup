@@ -1,0 +1,82 @@
+.profileWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: var(--large-padding);
+	background-color: var(--background);
+	border-radius: 1rem;
+	gap: var(--large-padding);
+	box-shadow: 19px 15px 30px 16px rgba(0, 0, 0, 0.1);
+    min-width: 30rem;
+
+    .inputWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        font-size: 2rem;
+        gap: var(--small-padding);
+
+        input {
+            border: 1px solid #80808091;
+            /* border: 1px solid var(--touch); */
+            padding: 0.5rem 1rem;
+			border-radius: var(--button-radius);
+			font-size: 1.25rem;
+
+        }
+    }
+ 
+    .information {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        font-size: 2rem;
+    }
+
+    .editButtons {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+        align-self: center;
+	}
+
+	.editButton {
+		display: flex;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--background);
+		border: solid;
+		border-radius: var(--button-radius);
+		color: var(--touch);
+		font-weight: 900;
+		padding: 0.5rem;
+		cursor: pointer;
+		transition: all 0.3s;
+		align-self: center;
+
+		&:hover {
+			background-color: var(--touch);
+			color: var(--background);
+			transform: scale(1.1);
+		}
+	}
+
+	.logoutButton {
+		font-size: 0.8rem;
+		align-self: center;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5rem 2rem;
+		text-decoration: underline;
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.profileWrapper {
+		min-width: unset;
+	}
+}

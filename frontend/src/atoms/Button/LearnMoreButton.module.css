@@ -1,0 +1,18 @@
+.button {
+	background-color: var(--background);
+	align-self: flex-start;
+	border-radius: var(--button-radius);
+	border: solid;
+	padding: 0.75rem 1.5rem;
+	font-weight: 700;
+	text-align: center;
+	color: var(--touch);
+	cursor: pointer;
+	transition: all 0.3s;
+
+	&:hover {
+		background-color: var(--touch);
+		color: var(--background);
+		transform: scale(1.1);
+	}
+}

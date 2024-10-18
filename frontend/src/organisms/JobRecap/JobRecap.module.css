@@ -1,0 +1,76 @@
+.card {
+	/* flex-basis: 44%; */
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	background-color: var(--background-card);
+	border: solid 1px #808080;
+	border-radius: 1rem;
+	padding: var(--large-padding);
+	gap: var(--large-padding);
+	margin: 5rem auto;
+	max-width: 60%;
+	align-items: center;
+	gap: var(--large-padding);
+
+	.info {
+		cursor: default;
+		pointer-events: none;
+		color: #808080;
+		border: #808080 1px solid;
+	}
+
+	.cardHeader {
+		width: 90%;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: var(--large-padding);
+
+		.imageWrapper {
+			width: 6rem;
+			height: 6rem;
+			flex-shrink: 0;
+			background-color: var(--background);
+			border-radius: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			.image {
+				width: 100%;
+			}
+		}
+
+		.company {
+			color: var(--text);
+			font-weight: 700;
+			font-size: 1rem;
+		}
+	}
+}
+
+.applyButtton {
+	display: flex;
+	flex-wrap: wrap;
+	background-color: var(--background);
+	border: solid;
+	border-radius: var(--button-radius);
+	color: var(--touch);
+	font-weight: 900;
+	padding: 0.5rem;
+	cursor: pointer;
+	transition: all 0.3s;
+
+	&:hover {
+		background-color: var(--touch);
+		color: var(--background);
+		transform: scale(1.1);
+	}
+}
+
+@media only screen and (max-width: 1000px) {
+	.card {
+		max-width: 90%;
+	}
+}

@@ -1,0 +1,33 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	height: 100%;
+	gap: var(--large-margin);
+
+	.jobsWrapper {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		grid-column-gap: 0px;
+		grid-row-gap: 0px;
+		gap: var(--large-padding);
+		margin: 0 var(--large-margin);
+	}
+
+	.noJobsWrapper {
+		height: 100%;
+	}
+}
+
+@media only screen and (max-width: 800px) {
+	.wrapper {
+		.jobsWrapper {
+			grid-template-columns: repeat(1, 1fr);
+			grid-template-rows: repeat(auto, 1fr);
+			gap: var(--large-padding);
+			margin: 0 var(--small-margin);
+		}
+	}
+}

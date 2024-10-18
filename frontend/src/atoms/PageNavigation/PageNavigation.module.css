@@ -1,0 +1,33 @@
+.numberPage {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: var(--background);
+	gap: 0 4rem;
+
+	.pageNumberWrapper {
+		display: flex;
+		gap: 0.5rem;
+		h2 {
+			color: var(--touch);
+		}
+	}
+
+	button {
+		width: 3rem;
+		height: 3rem;
+		background-color: var(--background);
+		border: solid;
+		border-radius: 50% 50%;
+		color: var(--touch);
+		padding: 0.5rem;
+		cursor: pointer;
+		transition: all 0.3s;
+
+		&:hover {
+			background-color: var(--touch);
+			color: var(--background);
+			transform: scale(1.1);
+		}
+	}
+}

@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300..700&display=swap");
+
+:root {
+	font-family: Poppins, Arial, sans-serif;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	--text: #343435;
+	--background: #ffffff;
+	--background-card: #f5f1eb;
+	--touch: #4aa7f9;
+	/* --touch: #ff8827; */
+	--title: #002050;
+	--primary: #2a60ff;
+	--secondary: #2a9bff;
+
+	--large-padding: 2rem;
+	--small-padding: 0.75rem;
+
+	--large-margin: 5rem;
+	--small-margin: 3rem;
+
+	--border-radius: 0.75rem;
+	--button-radius: 0.5rem;
+
+	--font-title: "Signika Negative";
+	--font-text: "Poppins";
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	color: var(--text);
+}
+
+h1 {
+	font-family: var(--font-title);
+	margin: 2rem 0;
+	font-size: 3rem;
+}
+
+h2 {
+	font-family: var(--font-title);
+	margin: 1rem 0;
+	font-size: 2rem;
+}
+
+h3 {
+	font-family: var(--font-title);
+	margin: 0.5rem 0;
+	font-size: 1.5rem;
+}
+
+p {
+	font-size: 1rem;
+}
+
+.htmlWrapperBig {
+	h1 {
+		background-color: #002050;
+	}
+
+	div {
+		word-break: break-all;
+	}
+}
+
+.htmlWrapperSmall {
+	h1 {
+		background-color: #002050;
+	}
+	div {
+		word-break: break-all;
+	}
+}

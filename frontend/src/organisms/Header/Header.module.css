@@ -1,0 +1,35 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: sticky;
+	top: 0;
+	width: 100%;
+	background-color: var(--background);
+	padding: 0.5rem 2rem;
+	z-index: 999;
+	box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.5);
+
+	.logo {
+		width: 5rem;
+	}
+
+	.linksWrapper {
+		display: flex;
+		list-style: none;
+		gap: 2rem;
+
+		.link {
+			color: var(--text);
+			transition: all 0.2s;
+
+			&:hover {
+				color: var(--touch);
+			}
+		}
+
+		.active {
+			color: var(--touch);
+		}
+	}
+}
