@@ -27,6 +27,7 @@ const SignupForm = () => {
 		register(formData)
 			.then((res) => {
 				localStorage.setItem("token", res.data.token);
+				toast.success("You are logged in");
 				navigate("/jobs");
 			})
 			.catch((error) => {
@@ -42,7 +43,7 @@ const SignupForm = () => {
 					type="text"
 					onChange={handleChange}
 					name="firstname"
-					placeholder="Frist name"
+					placeholder="First name"
 					required
 				/>
 				<input

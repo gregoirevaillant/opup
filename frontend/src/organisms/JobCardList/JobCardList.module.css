@@ -6,6 +6,12 @@
 	height: 100%;
 	gap: var(--large-margin);
 
+	h1 {
+		align-self: flex-start;
+		margin: 0;
+		margin-left: 8%;
+	}
+
 	.jobsWrapper {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);

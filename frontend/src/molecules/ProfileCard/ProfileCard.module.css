@@ -8,38 +8,37 @@
 	border-radius: 1rem;
 	gap: var(--large-padding);
 	box-shadow: 19px 15px 30px 16px rgba(0, 0, 0, 0.1);
-    min-width: 30rem;
+	min-width: 30rem;
 
-    .inputWrapper {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        font-size: 2rem;
-        gap: var(--small-padding);
+	.inputWrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		font-size: 2rem;
+		gap: var(--small-padding);
 
-        input {
-            border: 1px solid #80808091;
-            /* border: 1px solid var(--touch); */
-            padding: 0.5rem 1rem;
+		input {
+			border: 1px solid #80808091;
+			/* border: 1px solid var(--touch); */
+			padding: 0.5rem 1rem;
 			border-radius: var(--button-radius);
 			font-size: 1.25rem;
+		}
+	}
 
-        }
-    }
- 
-    .information {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        font-size: 2rem;
-    }
+	.information {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		font-size: 2rem;
+	}
 
-    .editButtons {
+	.editButtons {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		gap: 1rem;
-        align-self: center;
+		align-self: center;
 	}
 
 	.editButton {

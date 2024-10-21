@@ -28,8 +28,8 @@ const signUp = expressAsyncHandler(async (req: Request, res: Response) => {
 		return;
 	}
 
-	await pool.query(
-		"INSERT INTO users (id, email, password, firstname, lastname) VALUES($1, $2, $3, $4, $5)",
+	const newUser = await pool.query(
+		"INSERT INTO users (id, email, password, firstname, lastname) VALUES($1, $2, $3, $4, $5) RETURNING *",
 		[id, email, hashedPassword, firstname, lastname]
 	);
 

@@ -54,28 +54,22 @@ const ProfileCard = ({ user }: ProfileCardProps) => {
 
 	const handleCancel = () => {
 		setEditMode(false);
-        setFormData({
-            firstname: user?.firstname ?? "",
-            lastname: user?.lastname ?? "",
-            email: user?.email ?? "",
-            admin: user?.admin ?? false,
-            id: user?.id ?? ""
-        })
+		setFormData({
+			firstname: user?.firstname ?? "",
+			lastname: user?.lastname ?? "",
+			email: user?.email ?? "",
+			admin: user?.admin ?? false,
+			id: user?.id ?? ""
+		});
 	};
 
 	return (
 		<div className={styles.profileWrapper}>
 			{editMode ? (
 				<>
-                    <div className={styles.inputWrapper}>
+					<div className={styles.inputWrapper}>
 						<h5>ID </h5>
-						<input
-							type="text"
-							name="id"
-							placeholder="ID"
-							value={formData.id}
-                            readOnly
-						/>
+						<input type="text" name="id" placeholder="ID" value={formData.id} readOnly />
 					</div>
 					<div className={styles.inputWrapper}>
 						<h5>First name </h5>

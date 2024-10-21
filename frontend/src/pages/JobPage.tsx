@@ -64,19 +64,19 @@ const JobPage = () => {
 				<>
 					<JobRecap job={job} status={status} setApplyForm={setApplyForm} />
 					<div className={styles.section}>
-						<h3 className={styles.sectionTitle}>Post description</h3>
+						<h2 className={styles.sectionTitle}>Post description</h2>
 						<div className="htmlWrapperBig" dangerouslySetInnerHTML={{ __html: job.description }} />
 					</div>
 					<div className={styles.section}>
-						<h3 className={styles.sectionTitle}>Desired profile</h3>
+						<h2 className={styles.sectionTitle}>Desired profile</h2>
 						<div
 							className="htmlWrapperBig"
 							dangerouslySetInnerHTML={{ __html: job.desired_profile }}
 						/>
 					</div>
 					<div className={styles.section}>
-						<h3 className={styles.sectionTitle}>Company information</h3>
-						<p>{job?.company_description}</p>
+						<h2 className={styles.sectionTitle}>Company information</h2>
+						<div className="htmlWrapperBig">{job?.company_description}</div>
 					</div>
 				</>
 			)}

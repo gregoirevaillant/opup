@@ -72,16 +72,14 @@ const GhostCardList = () => {
 				</button>
 				{jobs.length > 0 ? (
 					<div className={styles.jobsWrapper}>
-						{jobs
-							.sort((a, b) => a.title.localeCompare(b.title))
-							.map((job) => (
-								<GhostCard
-									key={job.id}
-									job={job}
-									onEdit={handleEditJob}
-									onDelete={handleJobDeleted}
-								/>
-							))}
+						{jobs.map((job) => (
+							<GhostCard
+								key={job.id}
+								job={job}
+								onEdit={handleEditJob}
+								onDelete={handleJobDeleted}
+							/>
+						))}
 					</div>
 				) : (
 					<div className={styles.noJobsWrapper}>No jobs available</div>

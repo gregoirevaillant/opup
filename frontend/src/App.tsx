@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Layout from "./organisms/Layout";
 import AdminPage from "./pages/AdminPage";
@@ -13,6 +13,7 @@ function App() {
 	return (
 		<Routes>
 			<Route path="/" element={<Layout />}>
+				<Route index element={<Navigate to="/jobs" />} />
 				<Route path="login" element={<LoginPage />} />
 				<Route path="register" element={<RegisterPage />} />
 

@@ -23,25 +23,25 @@ const getCompanies = expressAsyncHandler(async (req: Request, res: Response) => 
 // @route POST /companies
 // @access private
 const createCompany = expressAsyncHandler(async (req: Request, res: Response) => {
-	const { name } = req.body;
+	const { name, logo } = req.body;
 	const id = uuidv4();
 
-	if (!name) {
-		res.json({ message: "No company name" });
+	if (!name || !logo) {
+		res.status(400).json({ message: "All fields are required to create a company" });
 		return;
 	}
 
 	const companyDuplicate = await pool.query("SELECT * FROM companies WHERE name = $1", [name]);
 
 	if (companyDuplicate.rowCount) {
-		res.json({ message: "Company name already used" });
+		res.status(409).json({ message: "Company name already used" });
 		return;
 	}
 
-	const newCompany = await pool.query("INSERT INTO companies(name, id) VALUES($1, $2)", [
-		name,
-		id
-	]);
+	const newCompany = await pool.query(
+		"INSERT INTO companies(name, logo, id) VALUES($1, $2, $3)",
+		[name, logo, id]
+	);
 
 	res.json(newCompany);
 });
@@ -51,17 +51,17 @@ const createCompany = expressAsyncHandler(async (req: Request, res: Response) =>
 // @access private
 const updateCompany = expressAsyncHandler(async (req: Request, res: Response) => {
 	const { id } = req.params;
-	const { name } = req.body;
+	const { name, logo } = req.body;
 
-	if (!name) {
-		res.json({ message: "No company name" });
+	if (!name || !logo) {
+		res.status(400).json({ message: "All fields are required to update a company" });
 		return;
 	}
 
-	const editedCompany = await pool.query("UPDATE companies SET name = $1 WHERE id = $2", [
-		name,
-		id
-	]);
+	const editedCompany = await pool.query(
+		"UPDATE companies SET name = $1, logo = $2 WHERE id = $3",
+		[name, logo, id]
+	);
 
 	res.json(editedCompany);
 });

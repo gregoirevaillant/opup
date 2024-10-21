@@ -21,7 +21,7 @@ const getInteractions = expressAsyncHandler(async (req: Request, res: Response) 
 			[user_id, job_id]
 		);
 		const interaction: Interaction = queryResult.rows[0];
-		res.json(interaction);
+		res.status(200).json(interaction);
 		return;
 	}
 
@@ -30,7 +30,7 @@ const getInteractions = expressAsyncHandler(async (req: Request, res: Response) 
 			user_id
 		]);
 		const interactions: Interaction[] = queryResult.rows;
-		res.json(interactions);
+		res.status(200).json(interactions);
 		return;
 	}
 });
@@ -59,7 +59,7 @@ const updateInteraction = expressAsyncHandler(async (req: Request, res: Response
 		[interactionData.status, interactionData.user_id, interactionData.job_id]
 	);
 
-	res.json(editedInteraction);
+	res.status(200).json(editedInteraction);
 });
 
 // @desc Delete an nteraction
@@ -73,7 +73,7 @@ const deleteInteraction = expressAsyncHandler(async (req: Request, res: Response
 		[interactionData.user_id, interactionData.job_id]
 	);
 
-	res.json(deletedInteraction);
+	res.status(200).json(deletedInteraction);
 });
 
 export default {

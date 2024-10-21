@@ -53,14 +53,13 @@ const JobCardList = () => {
 
 	return (
 		<div className={styles.wrapper}>
+			{user && <h1>Welcome back, {user?.firstname}!</h1>}
 			<SearchBar setSearchTerm={setSearchTerm} setCurrentPage={setCurrentPage} />
 			{jobs.length > 0 ? (
 				<div className={styles.jobsWrapper}>
-					{jobs
-						.sort((a, b) => a.title.localeCompare(b.title))
-						.map((job) => (
-							<JobCard key={job.id} job={job} status={interactionMap[job.id]} />
-						))}
+					{jobs.map((job) => (
+						<JobCard key={job.id} job={job} status={interactionMap[job.id]} />
+					))}
 				</div>
 			) : (
 				<div className={styles.noJobsWrapper}>No jobs available</div>

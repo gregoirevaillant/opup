@@ -6,6 +6,7 @@ import delteJob from "../../services/jobs/deleteJob";
 import { TJob } from "../../types/Tjob";
 
 import styles from "./GhostCard.module.css";
+import { toast } from "react-toastify";
 
 interface GhostCardProps {
 	job: TJob;
@@ -21,7 +22,7 @@ const stripHtml = (html: string) => {
 };
 
 const GhostCard = ({ job, onEdit, onDelete }: GhostCardProps) => {
-	const { id, title, description, company_name } = job;
+	const { id, title, description, company_name, company_logo } = job;
 	const [isPopupVisible, setIsPopupVisible] = useState(false);
 
 	const cleanDesc =
@@ -38,8 +39,9 @@ const GhostCard = ({ job, onEdit, onDelete }: GhostCardProps) => {
 		if (action === "edit") {
 			onEdit(job);
 		} else if (action === "delete") {
-			delteJob(id).then(() => {
+			delteJob(id).then((res) => {
 				onDelete(id);
+				toast.info(`${res.title} deleted`);
 			});
 		}
 	};
@@ -54,7 +56,7 @@ const GhostCard = ({ job, onEdit, onDelete }: GhostCardProps) => {
 				<div className={styles.imageWrapper}>
 					<img
 						className={styles.image}
-						src="https://logo-marque.com/wp-content/uploads/2020/09/IKEA-Logo-1982-2019.png"
+						src={company_logo}
 						alt="logo.ikea"
 					/>
 				</div>

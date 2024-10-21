@@ -19,6 +19,7 @@ const getJob = expressAsyncHandler(async (req: Request, res: Response) => {
                 jobs.tags,
                 jobs.desired_profile,
                 companies.name AS company_name,
+                companies.logo AS company_logo,
                 companies.description AS company_description,
                 jobs.company_id
             FROM 
@@ -37,7 +38,7 @@ const getJob = expressAsyncHandler(async (req: Request, res: Response) => {
 		return;
 	}
 
-	res.json(job);
+	res.status(200).json(job);
 });
 // @desc Get all jobs
 // @route GET /jobs
@@ -52,6 +53,7 @@ const getJobs = expressAsyncHandler(async (req: Request, res: Response) => {
 			jobs.description,
 			jobs.desired_profile,
 			companies.name AS company_name,
+            companies.logo AS company_logo,
 			companies.description AS company_description,
 			jobs.company_id
 		FROM 
@@ -59,7 +61,9 @@ const getJobs = expressAsyncHandler(async (req: Request, res: Response) => {
 		JOIN 
 			companies ON jobs.company_id = companies.id
 		WHERE 
-			($1::text IS NULL OR LOWER(jobs.title) LIKE LOWER('%' || $1 || '%'));
+			($1::text IS NULL OR LOWER(jobs.title) LIKE LOWER('%' || $1 || '%'))
+        ORDER BY 
+			jobs.title ASC;
 	`;
 
 	const queryResult = await pool.query(jobsQuery, [search]);
@@ -72,7 +76,7 @@ const getJobs = expressAsyncHandler(async (req: Request, res: Response) => {
 
 	const currentJobs = jobs.slice(pageIndex * jobsPerPage, pageIndex * jobsPerPage + jobsPerPage);
 
-	res.json({ currentJobs, totalPages, totalJobs });
+	res.status(200).json({ currentJobs, totalPages, totalJobs });
 });
 
 // @desc Create a job
@@ -81,6 +85,11 @@ const getJobs = expressAsyncHandler(async (req: Request, res: Response) => {
 const createJob = expressAsyncHandler(async (req: Request, res: Response) => {
 	const id = uuidv4();
 	const { title, tags, description, desired_profile, company_id } = req.body;
+
+	if (!title || !tags || !description || !desired_profile || !company_id) {
+		res.status(400).json({ message: "All fields are required to create a job post" });
+		return;
+	}
 
 	await pool.query(
 		"INSERT INTO jobs(id, title, tags, description, desired_profile, company_id) VALUES($1, $2, $3::json, $4, $5, $6) RETURNING *",
@@ -95,6 +104,7 @@ const createJob = expressAsyncHandler(async (req: Request, res: Response) => {
         jobs.description,
         jobs.desired_profile,
         companies.name AS company_name,
+        companies.logo AS company_logo,
         companies.description AS company_description,
         jobs.company_id
     FROM 
@@ -106,7 +116,7 @@ const createJob = expressAsyncHandler(async (req: Request, res: Response) => {
 `;
 
 	const createdJobResult = await pool.query(createdJobQuery, [id]);
-	res.json(createdJobResult.rows[0]);
+	res.status(201).json(createdJobResult.rows[0]);
 });
 
 // @desc Update a job
@@ -129,6 +139,7 @@ const updateJob = expressAsyncHandler(async (req: Request, res: Response) => {
         jobs.description,
         jobs.desired_profile,
         companies.name AS company_name,
+        companies.logo AS company_logo,
         companies.description AS company_description,
         jobs.company_id
     FROM 
@@ -140,7 +151,7 @@ const updateJob = expressAsyncHandler(async (req: Request, res: Response) => {
 `;
 
 	const updatedJobResult = await pool.query(updatedJobQuery, [id]);
-	res.json(updatedJobResult.rows[0]);
+	res.status(200).json(updatedJobResult.rows[0]);
 });
 
 // @desc Delete a job
@@ -149,9 +160,9 @@ const updateJob = expressAsyncHandler(async (req: Request, res: Response) => {
 const deleteJob = expressAsyncHandler(async (req: Request, res: Response) => {
 	const { id } = req.params;
 
-	const deletedJob = await pool.query("DELETE FROM jobs WHERE id = $1", [id]);
+	const deletedJob = await pool.query("DELETE FROM jobs WHERE id = $1 RETURNING *", [id]);
 
-	res.json(deletedJob);
+	res.status(200).json(deletedJob.rows[0]);
 });
 
 export default {

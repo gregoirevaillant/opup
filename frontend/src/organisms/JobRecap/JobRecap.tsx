@@ -12,7 +12,7 @@ interface JobRecapProps {
 }
 
 const JobRecap = ({ job, status, setApplyForm }: JobRecapProps) => {
-	const { title, company_name, tags } = job;
+	const { title, company_name, company_logo, tags } = job;
 
 	const handleOpen = () => {
 		document.body.style.overflow = "hidden";
@@ -26,7 +26,7 @@ const JobRecap = ({ job, status, setApplyForm }: JobRecapProps) => {
 				<div className={styles.imageWrapper}>
 					<img
 						className={styles.image}
-						src="https://logo-marque.com/wp-content/uploads/2020/09/IKEA-Logo-1982-2019.png"
+						src={company_logo}
 						alt="logo.ikea"
 					/>
 				</div>

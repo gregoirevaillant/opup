@@ -7,6 +7,7 @@ import useAuth from "../../../hooks/useAuth";
 import updateInteraction from "../../../services/interactions/updateInteraction";
 
 import styles from "./ApplicationForm.module.css";
+import { toast } from "react-toastify";
 
 interface ApplicationFormProps {
 	setApplyForm: (value: React.SetStateAction<boolean>) => void;
@@ -27,7 +28,7 @@ const ApplicationForm = ({ setApplyForm, setStatus }: ApplicationFormProps) => {
 		e.preventDefault();
 		setApplyForm(false);
 		document.body.style.overflow = "unset";
-		alert(JSON.stringify(formData)); // TODO: Send email
+		toast.success(`Your application has been sent`);
 		if (user && jobId) {
 			setStatus("applied");
 			updateInteraction({

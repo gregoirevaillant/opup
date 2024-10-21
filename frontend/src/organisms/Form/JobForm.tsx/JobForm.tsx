@@ -23,12 +23,16 @@ interface JobFormProps {
 const JobForm = ({ job, onClose, onJobCreated, onJobUpdated }: JobFormProps) => {
 	const [companies, setCompanies] = useState<TCompany[]>([]);
 	const [tagInput, setTagInput] = useState("");
+	const [isInitialRender, setIsInitialRender] = useState(true);
+	const [description, setDescription] = useState<string>();
+	const [desiredProfile, setDesiredProfile] = useState<string>();
 	const [formData, setFormData] = useState<TJob>({
 		id: "",
 		title: "",
 		description: "",
 		desired_profile: "",
 		company_id: "",
+		company_name: "",
 		tags: []
 	});
 
@@ -38,18 +42,26 @@ const JobForm = ({ job, onClose, onJobCreated, onJobUpdated }: JobFormProps) => 
 		});
 	}, []);
 
+	useEffect(() => setIsInitialRender(false), []);
+
 	useEffect(() => {
-		if (job) {
+		if (job && !description && !desiredProfile) {
+			setDescription(job.description);
+			setDesiredProfile(job.desired_profile);
+		}
+
+		if (job && !description && !desiredProfile) {
 			setFormData({
 				id: job.id,
 				title: job.title,
 				description: job.description,
 				company_id: job.company_id,
 				desired_profile: job.desired_profile,
+				company_name: job.company_name,
 				tags: job.tags
 			});
 		}
-	}, [job]);
+	}, [description, desiredProfile, job]);
 
 	const handleChange = (
 		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -95,14 +107,20 @@ const JobForm = ({ job, onClose, onJobCreated, onJobUpdated }: JobFormProps) => 
 
 		if (job) {
 			const updatedJob: TJob = await updateJob(job.id, formData);
+			toast.success(`${updatedJob.title} updated`);
 			onJobUpdated(updatedJob);
 		} else {
 			const newJob: TJob = await createJob(formData);
+			toast.success(`${newJob.title} created`);
 			onJobCreated(newJob);
 		}
 
+		setDescription("");
+		setDesiredProfile("");
 		onClose();
 	};
+
+	useEffect(() => {}, [description, formData.description]);
 
 	return (
 		<div className={styles.formWrapper}>
@@ -112,15 +130,6 @@ const JobForm = ({ job, onClose, onJobCreated, onJobUpdated }: JobFormProps) => 
 			<h3>{job ? "Edit Job" : "Create Job"}</h3>
 			<form onSubmit={handleSubmit}>
 				<div className={styles.inputWrapper}>
-					<ReactQuill
-						value={formData.description}
-						onChange={(value) => {
-							setFormData({
-								...formData,
-								description: value
-							});
-						}}
-					/>
 					<input
 						type="text"
 						name="title"
@@ -130,26 +139,36 @@ const JobForm = ({ job, onClose, onJobCreated, onJobUpdated }: JobFormProps) => 
 						required
 						maxLength={40}
 					/>
-					{/* <textarea
-						name="description"
-						value={formData.description}
-						onChange={handleChange}
-						rows={6}
-						minLength={80}
-						maxLength={2500}
-						placeholder="Job Description"
-						required
-					/> */}
-					<textarea
-						name="desired_profile"
-						value={formData.desired_profile}
-						onChange={handleChange}
-						rows={6}
-						minLength={80}
-						maxLength={2500}
-						placeholder="Desired Profile"
-						required
-					/>
+					<div className={styles.reactQuill}>
+						{!isInitialRender && (
+							<ReactQuill
+								value={description}
+								onChange={(value) => {
+									setFormData({
+										...formData,
+										description: value
+									});
+									setDescription(value);
+								}}
+								placeholder="Post description"
+							/>
+						)}
+					</div>
+					<div className={styles.reactQuill}>
+						{!isInitialRender && (
+							<ReactQuill
+								value={desiredProfile}
+								onChange={(value) => {
+									setFormData({
+										...formData,
+										desired_profile: value
+									});
+									setDesiredProfile(value);
+								}}
+								placeholder="Desired profile"
+							/>
+						)}
+					</div>
 					<select name="company_id" value={formData.company_id} onChange={handleChange} required>
 						<option value="">Select Company</option>
 						{companies?.map((company) => (

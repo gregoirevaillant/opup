@@ -18,7 +18,7 @@ const stripHtml = (html: string) => {
 };
 
 const JobCard = ({ job, status }: JobProps) => {
-	const { title, description, company_name, id, tags } = job;
+	const { title, description, company_name, company_logo, id, tags } = job;
 
 	const cleanDesc =
 		stripHtml(description).length > 270
@@ -33,7 +33,7 @@ const JobCard = ({ job, status }: JobProps) => {
 					<div className={styles.imageWrapper}>
 						<img
 							className={styles.image}
-							src="https://logo-marque.com/wp-content/uploads/2020/09/IKEA-Logo-1982-2019.png"
+							src={company_logo}
 							alt="logo.ikea"
 						/>
 					</div>

@@ -33,14 +33,14 @@ const getUsers = async (req: Request, res: Response) => {
 		return;
 	}
 
-	res.json(users);
+	res.status(200).json(users);
 };
 
 // @desc Create a user
 // @route POST /users
 // @access private
 const createUser = async (req: Request, res: Response) => {
-	res.json({ message: "Use the signup form" });
+	res.status(204).json({ message: "Use the signup form" });
 };
 
 // @desc Update a user
@@ -83,7 +83,7 @@ const deleteUser = async (req: Request, res: Response) => {
 
 	const deletedUser = await pool.query("DELETE FROM users WHERE id = $1", [id]);
 
-	res.json(deletedUser);
+	res.status(200).json({ message: "User deleted" });
 };
 
 export default {

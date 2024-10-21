@@ -8,7 +8,7 @@
 	border-radius: 1rem;
 	gap: var(--small-margin);
 	box-shadow: 19px 15px 30px 16px rgba(0, 0, 0, 0.1);
-    margin: 0 var(--large-padding);
+	margin: 0 var(--large-padding);
 
 	button {
 		display: flex;
