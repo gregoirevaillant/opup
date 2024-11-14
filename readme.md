@@ -3,8 +3,7 @@
 
 
 # OpUp
-> Vers de meilleures opportunités professionnelles
-
+> Towards better career opportunities
 
 ## Table of Contents
 - [About The Project](#about-the-project)
@@ -27,15 +26,15 @@ Simplified application process: Job seekers can apply directly to a job offer. I
 ## Tech Stack
 ### Tech Front
 [![TechBack](
-https://skillicons.dev/icons?i=vite,react,css,ts)](https://gregoirevaillant.github.io/opup-logo/logoopup.svg)
+https://skillicons.dev/icons?i=vite,react,css,ts)](https://gregoirevaillant.github.io/opup/logoopup.svg)
 
 ### Tech Back
 [![TechBack](
-https://skillicons.dev/icons?i=nodejs,ts,postgres)](https://gregoirevaillant.github.io/opup-logo/logoopup.svg)
+https://skillicons.dev/icons?i=nodejs,ts,postgres)](https://gregoirevaillant.github.io/opup/logoopup.svg)
 
 ### Organisation
 [![Orga](
-https://skillicons.dev/icons?i=notion,postman,vscode,ai,figma,github,git,npm)](https://gregoirevaillant.github.io/opup-logo/logoopup.svg)
+https://skillicons.dev/icons?i=notion,postman,vscode,ai,figma,github,git,npm)](https://gregoirevaillant.github.io/opup/logoopup.svg)
 
 
 ## Getting Started
@@ -53,9 +52,9 @@ Clone the repository
 And you are good to go.
     
 ## Possible features
-- Light/dark mode toggle
-- Messagerie possible entre le candidat et l'entreprise
-- Possibilité d'organiser des visios directement sur le site
+- Light/dark toggle mode
+- Add an integrated messaging system
+- Online meeting can be organized directly on the site
 
 
 ## Contact
@@ -85,8 +84,7 @@ And you are good to go.
 </table>
 
 ## Documentation
-[Documentation](https://linktodocumentation)
-
-
-## Acknowledgments
-Merci :)
+[MDN Http status code](https://developer.mozilla.org/fr/docs/Web/HTTP/Status#r%C3%A9ponses_derreur_c%C3%B4t%C3%A9_client) <br>
+[W3S React](https://www.w3schools.com/react/default.asp) <br>
+[W3S CSS](https://www.w3schools.com/css/default.asp) <br>
+[PERN STACK](https://youtu.be/ldYcgPKEZC8?si=mHr1pFi_FjlrLnPp) 
